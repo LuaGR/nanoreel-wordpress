@@ -1,0 +1,14 @@
+# WordPress Plugin Development
+*.log
+.DS_Store
+node_modules/
+vendor/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Internal documentation (not for public)
+AGENTS.md

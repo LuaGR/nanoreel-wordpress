@@ -1,0 +1,255 @@
+/**
+ * Admin Styles for NanoReel Settings Page
+ *
+ * @package NanoReel
+ * @since 1.0.0
+ */
+
+/* ===========================
+   Header Section
+   =========================== */
+
+.nanoreel-header {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    padding: 30px;
+    border-radius: 8px;
+    margin-bottom: 30px;
+    color: white;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.nanoreel-header h1 {
+    margin: 0 0 10px 0;
+    font-size: 32px;
+    font-weight: 700;
+    color: white;
+}
+
+.nanoreel-header p {
+    margin: 0;
+    font-size: 16px;
+    opacity: 0.95;
+}
+
+/* ===========================
+   Settings Container
+   =========================== */
+
+.nanoreel-settings-container {
+    background: #fff;
+    padding: 25px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    margin-bottom: 20px;
+}
+
+.nanoreel-settings-container h2 {
+    margin-top: 0;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #f0f0f0;
+}
+
+/* ===========================
+   Mode Selector (Radio Buttons)
+   =========================== */
+
+.nanoreel-mode-selector {
+    margin: 20px 0;
+}
+
+.nanoreel-mode-selector label {
+    display: inline-block;
+    margin-right: 30px;
+    font-weight: 500;
+    font-size: 15px;
+}
+
+.nanoreel-mode-selector input[type="radio"] {
+    margin-right: 8px;
+}
+
+/* ===========================
+   Settings Sections Toggle
+   =========================== */
+
+#nanoreel-managed-settings,
+#nanoreel-selfhosted-settings {
+    margin-top: 20px;
+    padding: 20px;
+    background: #f9f9f9;
+    border-radius: 6px;
+    border: 1px solid #e0e0e0;
+}
+
+#nanoreel-managed-settings h3,
+#nanoreel-selfhosted-settings h3 {
+    margin-top: 0;
+    color: #333;
+}
+
+/* ===========================
+   Form Fields
+   =========================== */
+
+.nanoreel-settings-container table.form-table th {
+    font-weight: 600;
+    color: #333;
+}
+
+.nanoreel-settings-container input[type="text"],
+.nanoreel-settings-container input[type="url"] {
+    width: 100%;
+    max-width: 500px;
+    padding: 8px 12px;
+    font-size: 14px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.nanoreel-settings-container input[type="text"]:focus,
+.nanoreel-settings-container input[type="url"]:focus {
+    border-color: #667eea;
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+.nanoreel-settings-container select {
+    padding: 8px 12px;
+    font-size: 14px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.nanoreel-settings-container .description {
+    color: #666;
+    font-size: 13px;
+    font-style: italic;
+    margin-top: 5px;
+}
+
+/* ===========================
+   Color Picker Override
+   =========================== */
+
+.nanoreel-color-picker {
+    max-width: 200px !important;
+}
+
+/* ===========================
+   Upgrade Section (Pro Upsell)
+   =========================== */
+
+.nanoreel-upgrade-section {
+    background: #fffbea;
+    border: 2px solid #ffe500;
+    border-radius: 8px;
+    padding: 25px;
+    margin-top: 30px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.nanoreel-upgrade-section h2 {
+    margin-top: 0;
+    color: #333;
+    font-size: 24px;
+}
+
+.nanoreel-upgrade-section ul {
+    margin: 15px 0;
+    padding-left: 20px;
+}
+
+.nanoreel-upgrade-section ul li {
+    margin-bottom: 10px;
+    font-size: 15px;
+    line-height: 1.6;
+}
+
+.nanoreel-upgrade-section .button-primary {
+    background: #ffe500;
+    border-color: #e6ce00;
+    color: #000;
+    font-weight: 700;
+    padding: 12px 30px;
+    font-size: 16px;
+    text-shadow: none;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease;
+}
+
+.nanoreel-upgrade-section .button-primary:hover {
+    background: #ffd700;
+    border-color: #ccaa00;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.nanoreel-upgrade-section .button-primary:active {
+    transform: translateY(0);
+}
+
+/* ===========================
+   Submit Button
+   =========================== */
+
+.nanoreel-settings-container .button-primary {
+    background: #667eea;
+    border-color: #5568d3;
+    padding: 10px 25px;
+    font-size: 15px;
+    font-weight: 600;
+}
+
+.nanoreel-settings-container .button-primary:hover {
+    background: #5568d3;
+    border-color: #4451b8;
+}
+
+/* ===========================
+   Help Text / Info Boxes
+   =========================== */
+
+.nanoreel-info-box {
+    background: #e7f3ff;
+    border-left: 4px solid #2196f3;
+    padding: 15px;
+    margin: 20px 0;
+    border-radius: 4px;
+}
+
+.nanoreel-info-box p {
+    margin: 0;
+    color: #333;
+    line-height: 1.6;
+}
+
+.nanoreel-info-box strong {
+    color: #1976d2;
+}
+
+/* ===========================
+   Responsive Adjustments
+   =========================== */
+
+@media screen and (max-width: 782px) {
+    .nanoreel-header {
+        padding: 20px;
+    }
+    
+    .nanoreel-header h1 {
+        font-size: 24px;
+    }
+    
+    .nanoreel-settings-container {
+        padding: 15px;
+    }
+    
+    .nanoreel-upgrade-section {
+        padding: 15px;
+    }
+    
+    .nanoreel-mode-selector label {
+        display: block;
+        margin-bottom: 10px;
+    }
+}
