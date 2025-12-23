@@ -53,8 +53,8 @@ nanoreel-wordpress/
 
 ### Architecture
 
-1. **Plugin loads widget.js from production API:**
-   - Script URL: `https://nanoreel.up.railway.app/public/widget.js`
+1. **Plugin loads widget.min.js from production API:**
+   - Script URL: `https://nanoreel.up.railway.app/public/widget.min.js`
    - No local bundling - always fetches latest version
 
 2. **Two operation modes:**
@@ -177,7 +177,7 @@ refactor: simplify shortcode attribute parsing
 - **Core Repository:** [github.com/LuaGR/nanoreel](https://github.com/LuaGR/nanoreel)
 - **Landing Page:** [nanoreel.vercel.app](https://nanoreel.vercel.app)
 - **Backend API:** [nanoreel.up.railway.app](https://nanoreel.up.railway.app)
-- **Widget Script:** [nanoreel.up.railway.app/public/widget.js](https://nanoreel.up.railway.app/public/widget.js)
+- **Widget Script:** [nanoreel.up.railway.app/public/widget.min.js](https://nanoreel.up.railway.app/public/widget.min.js)
 
 ---
 

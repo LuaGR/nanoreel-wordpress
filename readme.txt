@@ -254,7 +254,7 @@ Planned features for future versions:
 == Third-Party Services ==
 
 This plugin connects to the NanoReel API for:
-* Widget script delivery (`nanoreel.up.railway.app/public/widget.js`)
+* Widget script delivery (`nanoreel.up.railway.app/public/widget.min.js`)
 * Managed Mode configuration (Founder Deal users only)
 
 **Data sent:**
