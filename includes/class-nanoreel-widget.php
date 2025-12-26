@@ -38,10 +38,12 @@ class NanoReel_Widget extends WP_Widget {
      * @param array $instance Widget instance settings
      */
     public function widget($args, $instance) {
+        // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Widget args are pre-escaped by WordPress
         echo $args['before_widget'];
 
         if (!empty($instance['title'])) {
-            echo $args['before_title'] . apply_filters('widget_title', $instance['title']) . $args['after_title'];
+            // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Widget args are pre-escaped by WordPress
+            echo $args['before_title'] . esc_html(apply_filters('widget_title', $instance['title'])) . $args['after_title'];
         }
 
         // Render widget based on mode
@@ -49,36 +51,58 @@ class NanoReel_Widget extends WP_Widget {
 
         if (!empty($widget_id)) {
             // Managed mode: use widget-id
-            echo sprintf('<nanoreel-widget widget-id="%s"></nanoreel-widget>', esc_attr($widget_id));
+            echo wp_kses(
+                sprintf('<nanoreel-widget widget-id="%s"></nanoreel-widget>', esc_attr($widget_id)),
+                array('nanoreel-widget' => array('widget-id' => array()))
+            );
         } else {
             // Fallback: use global settings
             $mode = get_option('nanoreel_mode', 'managed');
 
             if ($mode === 'managed') {
                 $global_widget_id = get_option('nanoreel_widget_id', 'nanoreel-demo');
-                echo sprintf('<nanoreel-widget widget-id="%s"></nanoreel-widget>', esc_attr($global_widget_id));
+                echo wp_kses(
+                    sprintf('<nanoreel-widget widget-id="%s"></nanoreel-widget>', esc_attr($global_widget_id)),
+                    array('nanoreel-widget' => array('widget-id' => array()))
+                );
             } else {
                 // Self-hosted mode
                 $video_url = get_option('nanoreel_video_url', '');
                 if (!empty($video_url)) {
-                    $html = sprintf('<nanoreel-widget video-url="%s"', esc_url($video_url));
+                    $attrs = array(
+                        'video-url' => esc_url($video_url),
+                    );
 
                     $cta_text = get_option('nanoreel_cta_text', '');
                     $cta_link = get_option('nanoreel_cta_link', '');
                     $accent_color = get_option('nanoreel_accent_color', '#FFE500');
                     $shape = get_option('nanoreel_shape', 'rounded');
 
-                    if (!empty($cta_text)) $html .= sprintf(' cta-text="%s"', esc_attr($cta_text));
-                    if (!empty($cta_link)) $html .= sprintf(' cta-link="%s"', esc_url($cta_link));
-                    if (!empty($accent_color)) $html .= sprintf(' accent-color="%s"', esc_attr($accent_color));
-                    if (!empty($shape)) $html .= sprintf(' shape="%s"', esc_attr($shape));
+                    if (!empty($cta_text)) $attrs['cta-text'] = esc_attr($cta_text);
+                    if (!empty($cta_link)) $attrs['cta-link'] = esc_url($cta_link);
+                    if (!empty($accent_color)) $attrs['accent-color'] = esc_attr($accent_color);
+                    if (!empty($shape)) $attrs['shape'] = esc_attr($shape);
 
-                    $html .= '></nanoreel-widget>';
-                    echo $html;
+                    $attr_string = '';
+                    foreach ($attrs as $key => $value) {
+                        $attr_string .= sprintf(' %s="%s"', esc_attr($key), esc_attr($value));
+                    }
+
+                    echo wp_kses(
+                        '<nanoreel-widget' . $attr_string . '></nanoreel-widget>',
+                        array('nanoreel-widget' => array(
+                            'video-url' => array(),
+                            'cta-text' => array(),
+                            'cta-link' => array(),
+                            'accent-color' => array(),
+                            'shape' => array(),
+                        ))
+                    );
                 }
             }
         }
 
+        // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Widget args are pre-escaped by WordPress
         echo $args['after_widget'];
     }
 
@@ -93,7 +117,7 @@ class NanoReel_Widget extends WP_Widget {
         ?>
         <p>
             <label for="<?php echo esc_attr($this->get_field_id('title')); ?>">
-                <?php _e('Title (optional):', 'nanoreel'); ?>
+                <?php esc_html_e('Title (optional):', 'nanoreel'); ?>
             </label>
             <input
                 class="widefat"
@@ -106,7 +130,7 @@ class NanoReel_Widget extends WP_Widget {
 
         <p>
             <label for="<?php echo esc_attr($this->get_field_id('widget_id')); ?>">
-                <?php _e('Widget ID (optional):', 'nanoreel'); ?>
+                <?php esc_html_e('Widget ID (optional):', 'nanoreel'); ?>
             </label>
             <input
                 class="widefat"
@@ -116,7 +140,7 @@ class NanoReel_Widget extends WP_Widget {
                 value="<?php echo esc_attr($widget_id); ?>"
                 placeholder="nanoreel-main"
             >
-            <small><?php _e('Leave empty to use global settings from Settings → NanoReel', 'nanoreel'); ?></small>
+            <small><?php esc_html_e('Leave empty to use global settings from Settings → NanoReel', 'nanoreel'); ?></small>
         </p>
         <?php
     }
@@ -130,7 +154,7 @@ class NanoReel_Widget extends WP_Widget {
      */
     public function update($new_instance, $old_instance) {
         $instance = array();
-        $instance['title'] = !empty($new_instance['title']) ? strip_tags($new_instance['title']) : '';
+        $instance['title'] = !empty($new_instance['title']) ? wp_strip_all_tags($new_instance['title']) : '';
         $instance['widget_id'] = !empty($new_instance['widget_id']) ? sanitize_text_field($new_instance['widget_id']) : '';
         return $instance;
     }

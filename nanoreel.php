@@ -1,6 +1,6 @@
 <?php
 /**
- * Plugin Name: NanoReel - Video Widget for E-commerce
+ * Plugin Name: NanoReel - Video Widgets for Conversions
  * Plugin URI: https://nanoreel.vercel.app
  * Description: Add shoppable video widgets to your WooCommerce store in 1 click. Increase conversions with TikTok-style video popups.
  * Version: 1.0.0
@@ -53,8 +53,6 @@ class NanoReel_Plugin {
 	}
 
 	public function init() {
-		load_plugin_textdomain('nanoreel', false, dirname(plugin_basename(__FILE__)) . '/languages');
-
 		NanoReel_Settings::get_instance();
 		// Widget and Shortcode self-initialize via hooks in their own files
 
