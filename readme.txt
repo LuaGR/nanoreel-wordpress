@@ -198,7 +198,6 @@ No account needed for any tier.
 4. Widget video overlay (open state)
 5. Mobile view - fully responsive
 6. Color customization options
-7. Shortcode usage in post editor
 
 == Changelog ==
 
