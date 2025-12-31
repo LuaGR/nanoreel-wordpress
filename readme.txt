@@ -265,5 +265,5 @@ This plugin connects to the NanoReel API for:
 * Visitor IP addresses
 * Browsing history
 
-NanoReel API Terms: [nanoreel.vercel.app/terms](https://nanoreel.vercel.app/terms)
-Privacy Policy: [nanoreel.vercel.app/privacy](https://nanoreel.vercel.app/privacy)
+NanoReel API Terms: https://nanoreel.vercel.app/terms
+Privacy Policy: https://nanoreel.vercel.app/privacy
