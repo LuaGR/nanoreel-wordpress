@@ -252,9 +252,10 @@ Planned features for future versions:
 
 == Third-Party Services ==
 
-This plugin connects to the NanoReel API for:
-* Widget script delivery (`nanoreel.up.railway.app/public/widget.min.js`)
-* Managed Mode configuration (Founder Deal users only)
+This plugin relies on the NanoReel service and third-party infrastructure to function:
+
+1. **NanoReel API (Railway):** Used to deliver the widget script (`nanoreel.up.railway.app`) and handle configuration for Managed Mode.
+2. **Cloudflare R2:** Used by the NanoReel service for high-performance video storage and streaming (Managed Mode & Demo content).
 
 **Data sent:**
 * Domain name (for license validation)
